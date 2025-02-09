@@ -1,4 +1,5 @@
-import json
+from http.client import responses
+
 import grpc
 from service_pb2 import CheckAccessRequest
 from service_pb2_grpc import AccessControlStub
@@ -26,9 +27,12 @@ if __name__ == "__main__":
     username = "lironbilya"
     repository_name = "Secret-Project"
     organization_name = "LiRoNaORG"
-
+    
     response = check_access(username, repository_name, organization_name)
-    access = "has access" if response.allowed else "does NOT have access"
-    result = f"User {username} {access} to repository {repository_name} in the organization {organization_name}"
-
+    if response:
+        access = "has access" if response.allowed else "does NOT have access"
+        result = f"User {username} {access} to repository {repository_name} in the organization {organization_name}"
+    else:
+        result = "Error occurred on server."
+    
     print(result)
