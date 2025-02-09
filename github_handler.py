@@ -1,10 +1,11 @@
-from textwrap import indent
+import os
 from github import Github
-import json
+from dotenv import load_dotenv
+load_dotenv()
 
 # Set your GitHub Personal Access Token
-GITHUB_TOKEN = "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"
-github = Github(GITHUB_TOKEN)
+github_token = os.getenv('GITHUB_TOKEN')
+github = Github(github_token)
 
 def get_permissions(organization_name):
     org = github.get_organization(organization_name)
