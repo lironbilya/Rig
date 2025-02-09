@@ -3,7 +3,7 @@ from github import Github
 import json
 
 # Set your GitHub Personal Access Token
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = "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"
 github = Github(GITHUB_TOKEN)
 
 def get_permissions(organization_name):
