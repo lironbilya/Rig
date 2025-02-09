@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+service AccessControl  {
+    rpc CheckAccess  (CheckAccessRequest) returns (CheckAccessResponse);
+}
+
+message CheckAccessRequest {
+    string username = 1;
+    string repository_name = 2;
+    string organization_name = 3;
+}
+
+message CheckAccessResponse {
+    bool allowed = 1;
+}
